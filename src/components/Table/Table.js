@@ -16,18 +16,38 @@ const TableTitle = styled.div`
 const TableNameWrapper = styled.div`
   border-right: 1px solid black;
   width: 350px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:last-child {
     border-right: none;
   }
 `
 const TableName = styled.h1`
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
-  cursor: pointer;
 `
 const NoProduct = styled.h2`
   text-align: center;
+`
+const ButtonsTitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10px;
+`
+const BtnSort = styled.button`
+  background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: 20px;
+  height: 22px;
 `
 
 const Table = (props) => {
@@ -58,15 +78,33 @@ const Table = (props) => {
     <TableStyled>
       <TableTitle>
         <TableNameWrapper>
-          <TableName onClick={props.sortNames}>Title</TableName>
+          <TableName>
+            Title
+            <ButtonsTitleWrapper>	
+              <BtnSort onClick={props.sortNamesUp}>&#9650;</BtnSort>
+              <BtnSort onClick={props}>&#9660;</BtnSort>
+            </ButtonsTitleWrapper>
+            </TableName>
         </TableNameWrapper>
 
         <TableNameWrapper>
-          <TableName onClick={props.sortPrices}>Price $</TableName>
+          <TableName>
+            Price $
+            <ButtonsTitleWrapper>	
+              <BtnSort onClick={props}>&#9650;</BtnSort>
+              <BtnSort onClick={props.sortPricesDown}>&#9660;</BtnSort>
+            </ButtonsTitleWrapper>
+          </TableName>
         </TableNameWrapper>
 
         <TableNameWrapper>
-          <TableName onClick={props.sortStocks}>Stock</TableName>
+          <TableName>
+            Stock
+            <ButtonsTitleWrapper>	
+              <BtnSort onClick={props}>&#9650;</BtnSort>
+              <BtnSort onClick={props.sortStocksDown}>&#9660;</BtnSort>
+            </ButtonsTitleWrapper>
+            </TableName>
         </TableNameWrapper>
 
       </TableTitle>

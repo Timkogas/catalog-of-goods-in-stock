@@ -80,17 +80,17 @@ function App() {
     }
   }
 
-  const sortNames = () => {
+  const sortNamesUp = () => {
     const copyArr = [...products]
     copyArr.sort((a, b) => a.name.localeCompare(b.name))
     setProducts(copyArr)
   }
-  const sortPrices = () => {
+  const sortPricesDown = () => {
     const copyArr = [...products]
     copyArr.sort((a, b) => {return a.price - b.price;});
     setProducts(copyArr)
   }
-  const sortStocks = () => {
+  const sortStocksDown = () => {
     const copyArr = [...products]
     copyArr.sort((a, b) => {return a.stock - b.stock;});
     setProducts(copyArr)
@@ -101,9 +101,9 @@ function App() {
       <Table
         products={products}
         removeOneStockHandler={removeOneStockHandler}
-        sortNames={()=>{sortNames()}}
-        sortPrices={()=>{sortPrices()}}
-        sortStocks={()=>{sortStocks()}}
+        sortNamesUp={()=>{sortNamesUp()}}
+        sortPricesDown={()=>{sortPricesDown()}}
+        sortStocksDown={()=>{sortStocksDown()}}
       />
       <Form
       inputTitleValue={inputTitleValue}
