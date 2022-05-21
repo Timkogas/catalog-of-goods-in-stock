@@ -1,6 +1,38 @@
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+`
+const ProductInfo = styled.p`
+  font-size: 20px;
+  font-weight: bolder;
+  width: 340px;
+  text-align: center;
+`
+
+const Button = styled.button`
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  margin-left: 20px;
+`
+
 const Product = () => {
   return (
-    <></>
+    <Wrapper>
+      <ProductInfo>Name124124124142412</ProductInfo>
+      <ProductInfo>400</ProductInfo>
+      <ProductInfo>
+        20 
+        <Button>&mdash;</Button>
+      </ProductInfo>
+    </Wrapper>
   )
 }
 
