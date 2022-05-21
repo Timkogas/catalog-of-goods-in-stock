@@ -2,6 +2,7 @@ import Table from "../components/Table/Table";
 import Form from "../components/Form/Form";
 import styled from "styled-components";
 import {useState} from 'react'
+import Modal from "../components/Modal/Modal";
 
 const Container = styled.div`
   width: 1080px;
@@ -114,6 +115,9 @@ function App() {
     setProducts(copyArr)
   }
 
+  const yesModalHundler = () => {}
+  const noModalHundler = () => {}
+
   return (
     <Container>
       <Table
@@ -135,6 +139,10 @@ function App() {
       changeInputStock={(e)=>{changeInputStock(e)}}
 
       formBtnLogic={(e)=>{formBtnLogic(e)}}
+      />
+      <Modal
+        yesModalHundler={()=>{yesModalHundler()}}
+        noModalHundler={()=>{noModalHundler()}}
       />
     </Container>
   );
