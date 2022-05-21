@@ -21,6 +21,7 @@ const Button = styled.button`
 	cursor: pointer;
 	outline: inherit;
   margin-left: 20px;
+  height: 20px;
 `
 const Product = (props) => {
   const ProductBtnLogic = () => {

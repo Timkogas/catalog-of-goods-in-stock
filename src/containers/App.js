@@ -51,7 +51,32 @@ function App() {
   const formBtnLogic = (e) => {
     e.preventDefault()
     if (inputTitleValue && (inputPriceValue || inputStockValue)) {
-        
+      const filtredArr = products.filter((product)=> {
+        return product.nameNoRegister === inputTitleValue.toLowerCase()
+      }) 
+      const copyArr = [...products]
+      if (filtredArr.length) {
+        const index = products.findIndex(p => p.nameNoRegister === inputTitleValue.toLowerCase());
+        const copyElement = copyArr[index]
+        if (inputPriceValue) {
+          copyElement.price = inputPriceValue
+        }
+        if (inputStockValue) {
+          copyElement.stock = copyElement.stock + Number(inputStockValue) 
+        }
+        copyArr[index] = copyElement
+        setProducts(copyArr)
+      } else {
+        const newProduct = {
+          name: inputTitleValue,
+          nameNoRegister: inputTitleValue.toLowerCase(),
+          price: inputPriceValue ? inputPriceValue : 0,
+          stock: inputStockValue ? inputStockValue : 0,
+          id: createId()
+        }
+        copyArr.push(newProduct)
+        setProducts(copyArr)
+      }
     }
   }
 
