@@ -41,11 +41,13 @@ function App() {
   }
   
   const changeInputPrice = (e) => {
-    setInputPriceValue(e.target.value.replace(/[^+\d]/g, ''))
+    const value = e.target.value.replace(/[^+\d]/g, '')
+    setInputPriceValue(Number(value))
   }
 
   const changeInputStock = (e) => {
-    setInputStockValue(e.target.value.replace(/[^+\d]/g, ''))
+    const value = e.target.value.replace(/[^+\d]/g, '')
+    setInputStockValue(Number(value))
   }
 
   const formBtnLogic = (e) => {
@@ -62,7 +64,7 @@ function App() {
           copyElement.price = inputPriceValue
         }
         if (inputStockValue) {
-          copyElement.stock = copyElement.stock + Number(inputStockValue) 
+          copyElement.stock = copyElement.stock + inputStockValue 
         }
         copyArr[index] = copyElement
         setProducts(copyArr)
@@ -85,6 +87,22 @@ function App() {
     copyArr.sort((a, b) => a.name.localeCompare(b.name))
     setProducts(copyArr)
   }
+  const sortPricesUp = () => {
+    const copyArr = [...products]
+    copyArr.sort((a, b) => {return b.price - a.price;});
+    setProducts(copyArr)
+  }
+  const sortStocksUp = () => {
+    const copyArr = [...products]
+    copyArr.sort((a, b) => {return b.stock - a.stock;});
+    setProducts(copyArr)
+  }
+
+  const sortNamesDown = () => {
+    const copyArr = [...products]
+    copyArr.sort((a, b) => a.name.localeCompare(b.name))
+    setProducts(copyArr.reverse())
+  }
   const sortPricesDown = () => {
     const copyArr = [...products]
     copyArr.sort((a, b) => {return a.price - b.price;});
@@ -102,6 +120,9 @@ function App() {
         products={products}
         removeOneStockHandler={removeOneStockHandler}
         sortNamesUp={()=>{sortNamesUp()}}
+        sortPricesUp={()=>{sortPricesUp()}}
+        sortStocksUp={()=>{sortStocksUp()}}
+        sortNamesDown={()=>{sortNamesDown()}}
         sortPricesDown={()=>{sortPricesDown()}}
         sortStocksDown={()=>{sortStocksDown()}}
       />

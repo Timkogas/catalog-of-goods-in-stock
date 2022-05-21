@@ -82,7 +82,7 @@ const Table = (props) => {
             Title
             <ButtonsTitleWrapper>	
               <BtnSort onClick={props.sortNamesUp}>&#9650;</BtnSort>
-              <BtnSort onClick={props}>&#9660;</BtnSort>
+              <BtnSort onClick={props.sortNamesDown}>&#9660;</BtnSort>
             </ButtonsTitleWrapper>
             </TableName>
         </TableNameWrapper>
@@ -91,7 +91,7 @@ const Table = (props) => {
           <TableName>
             Price $
             <ButtonsTitleWrapper>	
-              <BtnSort onClick={props}>&#9650;</BtnSort>
+              <BtnSort onClick={props.sortPricesUp}>&#9650;</BtnSort>
               <BtnSort onClick={props.sortPricesDown}>&#9660;</BtnSort>
             </ButtonsTitleWrapper>
           </TableName>
@@ -101,7 +101,7 @@ const Table = (props) => {
           <TableName>
             Stock
             <ButtonsTitleWrapper>	
-              <BtnSort onClick={props}>&#9650;</BtnSort>
+              <BtnSort onClick={props.sortStocksUp}>&#9650;</BtnSort>
               <BtnSort onClick={props.sortStocksDown}>&#9660;</BtnSort>
             </ButtonsTitleWrapper>
             </TableName>
