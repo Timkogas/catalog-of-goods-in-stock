@@ -22,16 +22,25 @@ const Button = styled.button`
 	outline: inherit;
   margin-left: 20px;
 `
-
 const Product = (props) => {
+  const ProductBtnLogic = () => {
+    if (props.stock === 0) {
+      return (<>Not Available</>)
+    } else {
+      return (
+        <>
+          {props.stock}
+          <Button onClick={props.removeOneStockHandler}>&mdash;</Button>
+        </>
+      )
+    }
+  }
+
   return (
     <Wrapper>
       <ProductInfo>{props.name}</ProductInfo>
       <ProductInfo>{props.price}</ProductInfo>
-      <ProductInfo>
-        {props.stock}
-        <Button onClick={props.removeOneStockHandler}>&mdash;</Button>
-      </ProductInfo>
+      <ProductInfo>{ProductBtnLogic()}</ProductInfo>
     </Wrapper>
   )
 }
