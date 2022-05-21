@@ -51,6 +51,7 @@ const Table = (props) => {
             name={product.name}
             price={product.price}
             stock={product.stock}
+            removeOneStockHandler={()=>{props.removeOneStockHandler(product.id)}}
           />
         )
       })}

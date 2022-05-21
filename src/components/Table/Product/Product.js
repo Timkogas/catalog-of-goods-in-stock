@@ -30,7 +30,7 @@ const Product = (props) => {
       <ProductInfo>{props.price}</ProductInfo>
       <ProductInfo>
         {props.stock}
-        <Button>&mdash;</Button>
+        <Button onClick={props.removeOneStockHandler}>&mdash;</Button>
       </ProductInfo>
     </Wrapper>
   )

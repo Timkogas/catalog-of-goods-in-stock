@@ -21,11 +21,22 @@ function App() {
     return Date.now()
   } 
 
+  const removeOneStockHandler = (id) => {
+    const index = products.findIndex(p => p.id === id);
+    const copyArr = [...products]
+    const copyElement = copyArr[index]
+    if (copyElement.stock > 0) {
+      copyElement.stock--
+      copyArr[index] = copyElement
+      setProducts(copyArr)
+    }
+  }
 
   return (
     <Container>
       <Table
         products={products}
+        removeOneStockHandler={removeOneStockHandler}
       />
       <Form></Form>
     </Container>
