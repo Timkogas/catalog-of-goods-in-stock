@@ -53,7 +53,13 @@ const BtnSort = styled.button`
 const Table = (props) => {
 
   const ProductsLogic = () => {
-    if (props.products.length > 0) {
+    const arr = props.products.filter((product)=>{
+      if(product.stock>0) {
+        return product
+      }
+    })
+
+    if (props.products.length > 0 && arr.length) {
       return (
       <>
         {props.products.map((product)=>{
