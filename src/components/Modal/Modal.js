@@ -27,13 +27,23 @@ const Button = styled.button`
 `
 
 const Modal = (props) => {
-  return (
-    <ModalDivOpened>
-      <ModalText>Do you want to edit an existing product?</ModalText>
-      <Button onClick={props.yesModalHundler}>yes</Button>
-      <Button onClick={props.noModalHundler}>no</Button>
-    </ModalDivOpened>
-  )
+  if (props.modalOpen) {
+    return (
+      <ModalDivOpened>
+        <ModalText>Do you want to edit an existing product?</ModalText>
+        <Button onClick={props.yesModalHundler}>yes</Button>
+        <Button onClick={props.noModalHundler}>no</Button>
+      </ModalDivOpened>
+    )
+  } else {
+    return (
+      <ModalDivClosed>
+        <ModalText>Do you want to edit an existing product?</ModalText>
+        <Button onClick={props.yesModalHundler}>Yes</Button>
+        <Button onClick={props.noModalHundler}>No</Button>
+      </ModalDivClosed>
+    )
+  }
 }
 
 export default Modal

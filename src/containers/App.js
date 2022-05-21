@@ -13,14 +13,16 @@ const Container = styled.div`
 
 function App() {
   const [products, setProducts] = useState([
-    {name: 'ASUS Zenbook', nameNoRegister: 'asus zenbook', price: 1200, stock: 4, id: 1},
-    {name: 'Acer Predator', nameNoRegister: 'acer predator', price: 1500, stock: 2, id: 2},
-    {name: 'HDD Seagate 2TB', nameNoRegister: 'hdd seagate 2tb', price: 200, stock: 30, id: 3}
+    {name: 'ASUS Zenbook', nameNoRegister: 'asus zenbook', price: 1200, stock: 4, copy: 1, id: 1},
+    {name: 'Acer Predator', nameNoRegister: 'acer predator', price: 1500, stock: 2, copy: 1, id: 2},
+    {name: 'HDD Seagate 2TB', nameNoRegister: 'hdd seagate 2tb', price: 200, stock: 30, copy: 1, id: 3}
   ])
 
   const [inputTitleValue, setInputTitleValue] = useState('')
   const [inputPriceValue, setInputPriceValue] = useState('')
   const [inputStockValue, setInputStockValue] = useState('')
+
+  const [modalOpened, setModalOpened] = useState(false)
 
   const createId = () => {
     return Date.now()
@@ -59,22 +61,14 @@ function App() {
       }) 
       const copyArr = [...products]
       if (filtredArr.length) {
-        const index = products.findIndex(p => p.nameNoRegister === inputTitleValue.toLowerCase());
-        const copyElement = copyArr[index]
-        if (inputPriceValue) {
-          copyElement.price = inputPriceValue
-        }
-        if (inputStockValue) {
-          copyElement.stock = copyElement.stock + inputStockValue 
-        }
-        copyArr[index] = copyElement
-        setProducts(copyArr)
+        setModalOpened(true)
       } else {
         const newProduct = {
           name: inputTitleValue,
           nameNoRegister: inputTitleValue.toLowerCase(),
           price: inputPriceValue ? inputPriceValue : 0,
           stock: inputStockValue ? inputStockValue : 0,
+          copy: 1,
           id: createId()
         }
         copyArr.push(newProduct)
@@ -115,8 +109,39 @@ function App() {
     setProducts(copyArr)
   }
 
-  const yesModalHundler = () => {}
-  const noModalHundler = () => {}
+  const yesModalHundler = () => {
+    const copyArr = [...products]
+    const index = products.findIndex(p => p.nameNoRegister === inputTitleValue.toLowerCase());
+    const copyElement = copyArr[index]
+    if (inputPriceValue) {
+      copyElement.price = inputPriceValue
+    }
+    if (inputStockValue) {
+      copyElement.stock = copyElement.stock + inputStockValue 
+    }
+    copyArr[index] = copyElement
+    setProducts(copyArr)
+    setModalOpened(false)
+  }
+  const noModalHundler = () => {
+    const copyArr = [...products]
+    const index = products.findIndex(p => p.nameNoRegister === inputTitleValue.toLowerCase());
+    const copyElement = copyArr[index]
+    copyElement.copy = copyElement.copy + 1
+    setProducts(copyArr)
+    copyArr[index] = copyElement
+    const newProduct = {
+      name: `${inputTitleValue} #${copyElement.copy}`,
+      nameNoRegister: `${inputTitleValue} #${copyElement.copy}`.toLowerCase(),
+      price: inputPriceValue ? inputPriceValue : 0,
+      stock: inputStockValue ? inputStockValue : 0,
+      copy: 1,
+      id: createId()
+    }
+    copyArr.push(newProduct)
+    setProducts(copyArr)
+    setModalOpened(false)
+  }
 
   return (
     <Container>
@@ -143,6 +168,7 @@ function App() {
       <Modal
         yesModalHundler={()=>{yesModalHundler()}}
         noModalHundler={()=>{noModalHundler()}}
+        modalOpen={modalOpened}
       />
     </Container>
   );
