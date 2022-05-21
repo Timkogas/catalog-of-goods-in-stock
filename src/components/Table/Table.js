@@ -24,8 +24,34 @@ const TableName = styled.h1`
   width: 350px;
   text-align: center;
 `
+const NoProduct = styled.h2`
+  text-align: center;
+`
 
 const Table = (props) => {
+
+  const ProductsLogic = () => {
+    if (props.products.length > 0) {
+      return (
+      <>
+        {props.products.map((product)=>{
+          return (
+            <Product
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              stock={product.stock}
+              removeOneStockHandler={()=>{props.removeOneStockHandler(product.id)}}
+            />
+          )
+        })}
+      </>
+      )
+    } else { 
+      return <NoProduct>No Product Available</NoProduct>
+    }
+  }
+
   return (
     <TableStyled>
       <TableTitle>
@@ -43,18 +69,7 @@ const Table = (props) => {
 
       </TableTitle>
 
-
-      {props.products.map((product)=>{
-        return (
-          <Product
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            stock={product.stock}
-            removeOneStockHandler={()=>{props.removeOneStockHandler(product.id)}}
-          />
-        )
-      })}
+      <ProductsLogic/>
 
     </TableStyled>
   )
