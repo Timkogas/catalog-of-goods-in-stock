@@ -11,7 +11,9 @@ const InputStock = (props) => {
     <Input 
       type='text' 
       placeholder='Stock' 
-      name="stock"
+      name="stock availability"
+      value={props.inputStockValue}
+      onChange={props.changeInputStock}
     />
   )
 }

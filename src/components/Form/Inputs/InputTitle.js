@@ -11,6 +11,8 @@ const InputTitle = (props) => {
       type='text' 
       placeholder='Title' 
       name="title"
+      value={props.inputTitleValue}
+      onChange={props.changeInputTitle}
     />
   )
 }

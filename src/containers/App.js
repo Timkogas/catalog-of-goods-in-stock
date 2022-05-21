@@ -17,6 +17,10 @@ function App() {
     {name: 'HDD Seagate 2TB', nameNoRegister: 'hdd seagate 2tb', price: 200, stock: 30, id: 3}
   ])
 
+  const [inputTitleValue, setInputTitleValue] = useState('')
+  const [inputPriceValue, setInputPriceValue] = useState('')
+  const [inputStockValue, setInputStockValue] = useState('')
+
   const createId = () => {
     return Date.now()
   } 
@@ -32,13 +36,32 @@ function App() {
     }
   }
 
+  const changeInputTitle = (e) => {
+    setInputTitleValue(e.target.value)
+  }
+  
+  const changeInputPrice = (e) => {
+    setInputPriceValue(e.target.value.replace(/[^+\d]/g, ''))
+  }
+
+  const changeInputStock = (e) => {
+    setInputStockValue(e.target.value.replace(/[^+\d]/g, ''))
+  }
+
   return (
     <Container>
       <Table
         products={products}
         removeOneStockHandler={removeOneStockHandler}
       />
-      <Form></Form>
+      <Form
+      inputTitleValue={inputTitleValue}
+      inputPriceValue={inputPriceValue}
+      inputStockValue={inputStockValue}
+      changeInputTitle={(e)=>{changeInputTitle(e)}}
+      changeInputPrice={(e)=>{changeInputPrice(e)}}
+      changeInputStock={(e)=>{changeInputStock(e)}}
+      />
     </Container>
   );
 }

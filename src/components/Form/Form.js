@@ -11,12 +11,22 @@ const FormStyled = styled.form`
   gap: 20px;
 `
 
-const Form = () => {
+const Form = (props) => {
   return (
     <FormStyled>
-      <InputPrice/>
-      <InputStock/>
-      <InputTitle/>
+      <InputTitle
+        inputTitleValue={props.inputTitleValue}
+        changeInputTitle={props.changeInputTitle}
+      />
+
+      <InputPrice
+        inputPriceValue={props.inputPriceValue}
+        changeInputPrice={props.changeInputPrice}
+      />
+      <InputStock
+        inputStockValue={props.inputStockValue}
+        changeInputStock={props.changeInputStock}
+      />
       <ButtonForm/>
     </FormStyled>
   )

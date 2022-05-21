@@ -11,6 +11,8 @@ const InputPrice = (props) => {
       type='text' 
       placeholder='Price' 
       name="price"
+      value={props.inputPriceValue}
+      onChange={props.changeInputPrice}
     />
   )
 }
