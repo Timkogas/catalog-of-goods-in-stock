@@ -15,14 +15,16 @@ const TableTitle = styled.div`
 `
 const TableNameWrapper = styled.div`
   border-right: 1px solid black;
+  width: 350px;
+  text-align: center;
   &:last-child {
     border-right: none;
   }
 `
 const TableName = styled.h1`
+  display: inline-block;
   font-size: 20px;
-  width: 350px;
-  text-align: center;
+  cursor: pointer;
 `
 const NoProduct = styled.h2`
   text-align: center;
@@ -56,15 +58,15 @@ const Table = (props) => {
     <TableStyled>
       <TableTitle>
         <TableNameWrapper>
-          <TableName>Title</TableName>
+          <TableName onClick={props.sortNames}>Title</TableName>
         </TableNameWrapper>
 
         <TableNameWrapper>
-          <TableName>Price</TableName>
+          <TableName onClick={props.sortPrices}>Price $</TableName>
         </TableNameWrapper>
 
         <TableNameWrapper>
-          <TableName>Stock</TableName>
+          <TableName onClick={props.sortStocks}>Stock</TableName>
         </TableNameWrapper>
 
       </TableTitle>
