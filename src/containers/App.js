@@ -48,6 +48,13 @@ function App() {
     setInputStockValue(e.target.value.replace(/[^+\d]/g, ''))
   }
 
+  const formBtnLogic = (e) => {
+    e.preventDefault()
+    if (inputTitleValue && (inputPriceValue || inputStockValue)) {
+        
+    }
+  }
+
   return (
     <Container>
       <Table
@@ -61,6 +68,8 @@ function App() {
       changeInputTitle={(e)=>{changeInputTitle(e)}}
       changeInputPrice={(e)=>{changeInputPrice(e)}}
       changeInputStock={(e)=>{changeInputStock(e)}}
+
+      formBtnLogic={(e)=>{formBtnLogic(e)}}
       />
     </Container>
   );

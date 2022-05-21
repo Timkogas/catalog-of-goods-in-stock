@@ -13,7 +13,9 @@ const FormStyled = styled.form`
 
 const Form = (props) => {
   return (
-    <FormStyled>
+    <FormStyled
+      onSubmit={props.formBtnLogic}
+    >
       <InputTitle
         inputTitleValue={props.inputTitleValue}
         changeInputTitle={props.changeInputTitle}
@@ -27,7 +29,11 @@ const Form = (props) => {
         inputStockValue={props.inputStockValue}
         changeInputStock={props.changeInputStock}
       />
-      <ButtonForm/>
+      <ButtonForm
+        inputTitleValue={props.inputTitleValue}
+        inputPriceValue={props.inputPriceValue}
+        inputStockValue={props.inputStockValue}
+      />
     </FormStyled>
   )
 }
