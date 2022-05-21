@@ -23,13 +23,13 @@ const Button = styled.button`
   margin-left: 20px;
 `
 
-const Product = () => {
+const Product = (props) => {
   return (
     <Wrapper>
-      <ProductInfo>Name124124124142412</ProductInfo>
-      <ProductInfo>400</ProductInfo>
+      <ProductInfo>{props.name}</ProductInfo>
+      <ProductInfo>{props.price}</ProductInfo>
       <ProductInfo>
-        20 
+        {props.stock}
         <Button>&mdash;</Button>
       </ProductInfo>
     </Wrapper>

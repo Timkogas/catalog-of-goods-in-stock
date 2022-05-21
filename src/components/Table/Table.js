@@ -25,7 +25,7 @@ const TableName = styled.h1`
   text-align: center;
 `
 
-const Table = () => {
+const Table = (props) => {
   return (
     <TableStyled>
       <TableTitle>
@@ -44,9 +44,16 @@ const Table = () => {
       </TableTitle>
 
 
-      <Product></Product>
-      <Product></Product>
-      <Product></Product>
+      {props.products.map((product)=>{
+        return (
+          <Product
+            key={product.id}
+            name={product.name}
+            price={product.price}
+            stock={product.stock}
+          />
+        )
+      })}
 
     </TableStyled>
   )
